@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#e9eef5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#141b2b" media="(prefers-color-scheme: dark)">
+
+<meta name="robots" content="noindex">
+<title>Тихий вечер</title>
+<link rel="icon" href="icons/192.png"><link rel="apple-touch-icon" href="icons/192.png">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<main>
+<section id="v-today">
+  <p class="date" id="date"></p><h1 id="title">Как прошёл день?</h1>
+  <div class="help" id="helpDay" hidden><p><b>Похоже, тебе сейчас очень тяжело.</b> Не оставайся с этим одна. Если ты в опасности или боишься себе навредить, позвони <a href="tel:112">112</a> и обратись к человеку, рядом с которым тебе безопасно.</p></div>
+  <form id="form">
+    <fieldset><legend>Настроение</legend><div class="moods" id="moods"></div></fieldset>
+    <fieldset><legend>Усталость</legend><div class="scale" id="fatigue"></div><div class="ends"><span>полна сил</span><span>совсем без сил</span></div></fieldset>
+    <fieldset><legend>Что было сегодня</legend><div class="tags" id="tags"></div></fieldset>
+    <label class="field" for="note">Что запомнилось? <small>без данных клиентов</small><input id="note" placeholder="Необязательно" maxlength="200" autocomplete="off"></label>
+    <button class="primary" id="save" disabled>Получить поддержку</button>
+  </form>
+  <div id="done" hidden><div class="answer"><span id="doneMood"></span><p id="reply" aria-live="polite"></p></div><div class="stack after"><button id="more1">Ещё слова поддержки</button><button class="link" id="again">Начать заново</button></div></div>
+  <p class="hint small">Ничего не сохраняется и не отправляется: всё исчезнет, когда закроешь страницу.</p>
+  <div class="care" id="care"><div><b>💧 Вода</b><span id="waterN"></span><span class="pair"><button id="waterMinus" aria-label="Убрать стакан">−</button><button id="waterPlus">Выпила</button></span></div>
+  <div><b>🧘 Перерыв</b><span>факт, задачка или английский</span><span class="pair"><button id="breathe">Начать</button></span></div></div>
+</section>
+<section id="v-vent" hidden>
+  <h1>Выговориться</h1>
+  <p class="hint">Скажи всё как есть. Разговор никуда не отправляется и исчезнет, когда ты его закончишь или закроешь страницу.</p>
+  <div class="help" id="helpVent" hidden><p><b>Похоже, тебе сейчас очень тяжело.</b> Не оставайся с этим одна. Если ты в опасности или боишься себе навредить, позвони <a href="tel:112">112</a> и обратись к человеку, рядом с которым тебе безопасно.</p></div>
+  <div id="chat" aria-live="polite"></div>
+  <form id="vform"><label class="sr" for="vtext">Что на душе</label><textarea id="vtext" rows="6" maxlength="4000" placeholder="Что на душе?"></textarea>
+  <button class="primary" id="vsend">Отправить</button></form>
+  <button class="link" id="vend">Закончить и стереть</button>
+  <p class="hint small">Это заранее написанные слова поддержки. Они не заменят разговор с близким человеком или психологом.</p>
+</section>
+<section id="v-set" hidden>
+  <h1>Напоминания</h1>
+  <p class="hint">Они придут из календаря телефона, даже когда страница закрыта. Выбери личный календарь, а не рабочий.</p>
+  <form id="sform">
+    <div class="row"><label><input type="checkbox" id="s-evening"> Вечерняя отметка</label><input type="time" id="s-eveningTime" aria-label="Время отметки" required></div>
+    <div class="row"><label><input type="checkbox" id="s-rest"> Вода и перерыв</label><select id="s-restEvery" aria-label="Как часто напоминать о воде и перерыве"></select></div>
+    <div class="row"><span>Рабочий день</span><span class="times"><input type="time" id="s-from" aria-label="Начало дня" required> – <input type="time" id="s-to" aria-label="Конец дня" required></span></div>
+    <div class="tags" id="s-days"></div>
+    <button class="primary">Добавить в календарь</button>
+  </form>
+  <p class="hint">Чтобы изменить или убрать напоминания, сначала удали старые события в календаре.</p>
+</section>
+</main>
+<nav aria-label="Разделы"><button data-v="today">Сегодня</button><button data-v="vent">Выговориться</button><button data-v="set">Напоминания</button></nav>
+<dialog id="breath" aria-label="Перерыв"><p id="left"></p>
+<div class="kinds" id="kinds"></div>
+<div id="card"><p id="cardText"></p><form id="mform"><label class="sr" for="manswer">Ответ</label><input id="manswer" inputmode="numeric" autocomplete="off" placeholder="Ответ"><button>Проверить</button></form><button id="show">Показать перевод</button><p id="cardBack" role="status"></p></div>
+<div id="air"><div class="circle" id="circle"></div><p id="phase" role="status"></p></div>
+<div class="stack"><button class="primary" id="more">Ещё</button><button id="stop">Закончить</button></div></dialog>
+<div id="toast" role="status"></div>
+<script type="module" src="app.js"></script>
+</body></html>

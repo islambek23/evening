@@ -1,0 +1,7 @@
+node_modules/
+later/
+.vercel/
+.env*
+.dev.vars
+*.ics
+tihiy-vecher-*.json
