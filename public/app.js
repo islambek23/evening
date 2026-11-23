@@ -24,7 +24,7 @@ const today = () => L.todayKey();
 function newDay() {
   draft = { mood: 0, fatigue: 0, tags: [], note: '' };
   $('note').value = ''; $('save').disabled = true; $('form').hidden = false; $('done').hidden = true; $('helpDay').hidden = true;
-  $('title').textContent = 'Как прошёл день?';
+  $('title').textContent = 'Как прошёл день, Любимая Жандармошка?';
   $('date').textContent = L.parseKey(today()).toLocaleDateString('ru', { weekday: 'long', day: 'numeric', month: 'long' });
   group('moods', [1, 2, 3, 4, 5].map(n => [n, ...L.MOODS[n]]), v => draft.mood === v, v => { draft.mood = v; });
   group('fatigue', [1, 2, 3, 4, 5].map(n => [n, String(n), `Усталость ${n} из 5`]), v => draft.fatigue === v, v => { draft.fatigue = v; });
